@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import * as Auth from "./views/authentication";
 
 const App = () => {
   return (
     <div>
-      <SignUp />;
+      <Auth.SignIn />;
     </div>
   );
 };
