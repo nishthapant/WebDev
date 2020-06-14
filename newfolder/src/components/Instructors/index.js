@@ -6,4 +6,4 @@ const Instructors = ()=>(
     </div>
 );
 
-export default Inst
+export default Instructors;
