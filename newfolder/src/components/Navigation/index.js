@@ -12,14 +12,20 @@ const Navigation = ()=>(
             <li>
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </li>
-            {/* <li>
-                <Link to={ROUTES.LANDING}>Landing</Link>
-            </li> */}
             <li>
-                <Link to={ROUTES.HOME}>Home</Link>
+                <Link to={ROUTES.INSTRUCTORS}>Instructors</Link>
             </li>
             <li>
-                <Link to={ROUTES.ACCOUNT}>Account</Link>
+                <Link to={ROUTES.SUBJECTS}>Sujects</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.BLOGS}>Blogs</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.ABOUT}>About</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.CONTACT}>Contact Us</Link>
             </li>
         </ul>
     </div>
