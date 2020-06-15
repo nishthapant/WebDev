@@ -16,7 +16,7 @@ const Navigation = ()=>(
                 <Link to={ROUTES.INSTRUCTORS}>Instructors</Link>
             </li>
             <li>
-                <Link to={ROUTES.SUBJECTS}>Sujects</Link>
+                <Link to={ROUTES.SUBJECTS}>Subjects</Link>
             </li>
             <li>
                 <Link to={ROUTES.BLOGS}>Blogs</Link>
