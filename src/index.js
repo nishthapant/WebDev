@@ -1,13 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import * as Auth from "./views/authentication";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const App = () => {
-  return (
-    <div>
-      <Auth.SignIn />;
-    </div>
-  );
-};
+import './index.css';
+import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+import App from './components/App';
+import Firebase, {FirebaseContext}  from './components/Firebase';
+
+ReactDOM.render(
+    <FirebaseContext.Provider value={new Firebase()}>
+        <App/>
+    </FirebaseContext.Provider>,
+    document.getElementById('root'),
+);
+
+serviceWorker.unregister();
