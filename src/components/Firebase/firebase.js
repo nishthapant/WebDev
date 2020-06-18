@@ -10,20 +10,31 @@ const config = {
     messagingSenderId: "593316536658",
     appId: "1:593316536658:web:954811cbc5206e08789a8b",
     measurementId: "G-PB23PH6R6B"
-  };
+};
 
-  class Firebase{
-      constructor(){
-          app.initializeApp(config);
-          this.auth = app.auth();
-      }
+//init firestore
+const db = app.firestore();
+db.settings({timestampsInSnapshots:true});
 
-      userSignUp = (email, password)=>{
-          return this.auth.createUserWithEmailAndPassword(email,password);
-      }
+class Firebase{
+    constructor(){
+        app.initializeApp(config);
+        this.auth = app.auth();
+    }
 
-      userSignIn = (email, password)=>{
-        return this.auth.signInWithEmailAndPassword(email, password);
+    userSignUp = (email, password)=>{
+        //populate db with user info
+        db.collection('users').add({
+            email: email,
+            firstName: '',
+            lastName: '',
+            password: password
+        })
+        return this.auth.createUserWithEmailAndPassword(email,password);
+    }
+
+    userSignIn = (email, password)=>{
+    return this.auth.signInWithEmailAndPassword(email, password);
     }
 
     userSignOut = ()=>{
@@ -38,6 +49,6 @@ const config = {
         return this.auth.currentUser.updatePassword(password);
     }
 
-  }
+}
 
-  export default Firebase;
+export default Firebase;
