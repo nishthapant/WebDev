@@ -215,7 +215,7 @@ class SignUpFormBase extends Component{
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                //   onClick={this.renderRedirect()}
+                //onClick={this.renderRedirect()}
                 >
                   Sign Up
                 </Button>

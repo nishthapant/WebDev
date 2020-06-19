@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import { render } from '@testing-library/react';
 
 const config = {
     apiKey: "AIzaSyAFbN0nM2GRdbjROok9It4vL2hyLh4d0HM",
@@ -15,6 +16,27 @@ const config = {
 //init firestore
 const db = app.firestore();
 db.settings({timestampsInSnapshots:true});
+
+//render user doc
+function render(doc){
+    let email = doc.data().email;
+    let firstName = String(doc.data().firstName).toLowerCase();
+    let lastName = String(doc.data().lastName).toLowerCase();
+    let id = doc.id;
+    console.log("ID: " + id);
+    console.log("Name: " + firstName.slice(0,1).toUpperCase() + firstName.substr(1) + " " + lastName.slice(0,1).toUpperCase() + lastName.substr(1));
+    console.log("Email: " + email);
+    console.log("\n");
+}
+
+//get user doc via email
+function getDoc(email){
+    db.collection("users").where('email', '==', email).get().then((snapshot)=>{
+        snapshot.docs.forEach(doc=>{
+            render(doc);
+        })
+    });
+}
 
 class Firebase{
     constructor(){
