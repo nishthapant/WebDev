@@ -10,7 +10,7 @@ import Firebase, { FirebaseContext } from "./views/authentication/Firebase";
 const App = () => {
   return (
     <div>
-      <Auth.SignUp />;
+      <Dash.Dashboard />;
     </div>
   );
 };
