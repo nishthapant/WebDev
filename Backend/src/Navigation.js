@@ -70,7 +70,9 @@ class NavBar extends Component{
 
     redirectTo = ()=>{
         if(this.state.redirectLogin){
-            this.state.redirectLogin = false;
+            this.setState({
+                redirectLogin : false,
+           })
             return(
             <div>
                 {/* <Route path={ROUTES.LOGIN} component={Login}/> */}
@@ -79,7 +81,9 @@ class NavBar extends Component{
             )
         }
         else if(this.state.redirectSignup){
-            this.state.redirectSignup = false;
+            this.setState({
+                redirectSignup : false,
+           })
             return(
                 <div>
                     {/* <Route path={ROUTES.SIGNUP} component={Signup}/> */}
@@ -97,7 +101,9 @@ class NavBar extends Component{
         //     );
         // }
         else if(this.state.redirectHome){
-            this.state.redirectHome = false;
+            this.setState({
+                redirectHome : false,
+           })
             return(
                 <div>
                     {/* <Route path='/' component={Home}/> */}
