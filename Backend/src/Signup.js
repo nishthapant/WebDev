@@ -19,6 +19,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {compose} from 'recompose';
 import * as ROUTES from './routes.js';
 import Login from './Login';
+import { app, firestore } from "firebase";
+import app from 'firebase/app';
 
 function Copyright() {
     return (
@@ -102,11 +104,14 @@ class SignUpFormClass extends Component{
       const{firstName, lastName, email, password}=this.state;
       this.props.firebase
       .userSignUp(email, password)
+      .then((user)=> {
+        user.displayName = firstName + ' ' + lastName;
+      })
       .then(()=>this.setState({...INIT_STATE}))
       .then(()=>alert('We signed you up!'))
       .then(()=>this.setRedirect())
       .catch(error => {
-        alert("Cannot sign up");
+        alert("Cannot sign up! " + error.message);
         this.setState({error});
       });
 

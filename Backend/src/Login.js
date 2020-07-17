@@ -104,13 +104,13 @@ class LoginFormClass extends Component{
       const{email, password}=this.state;
       this.props.firebase
       .userLogin(email, password)
+      .then((user)=> console.log("logged in", user))
       .then(()=>console.log(this.props.firebase.getCurrentUser()))
       .then(()=>this.setState({...INIT_STATE}))
       .then(()=>alert('You are logged in!'))
       .then(()=>this.setRedirect())
       .catch(error => {
-        alert(`Cannot login. User is ${this.props.firebase.getCurrentUser()}`);
-        
+        alert('Cannot login! ' + error.message);
         this.setState({error});
       });
 

@@ -21,36 +21,23 @@ class Firebase{
           user: null
         }
     }
-
-    // authStateChanged = ()=>{
-    //   let authState = this;
-    //   this.auth.onAuthStateChanged(function(client) {
-    //     if (client) {
-    //       // User is signed in.
-    //       // console.log(client);
-    //       authState.setState({
-    //         user: client
-    //       })
-    //     } else {
-    //       alert("Not signed in!");
-    //       // return null;
-    //       // No user is signed in.
-    //     }
-    //   });
-    // }
-
+    
+    
     getCurrentUser = ()=>{
-      return this.auth.currentUser;
+      app.auth().onAuthStateChanged((client) => {
+        console.log(client);
+        if(client){
+          return client;
+        }
+        else{
+          alert("Not signed in!");
+          return null;
+        }
+      })
+      //return this.auth.currentUser;
     }
 
     userSignUp = (email, password)=>{
-        //populate db with user info
-        // db.collection('users').add({
-        //     email: email,
-        //     firstName: '',
-        //     lastName: '',
-        //     password: password
-        // })
         console.log(email);
         return this.auth.createUserWithEmailAndPassword(email,password);
     }
