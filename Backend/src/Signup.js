@@ -20,7 +20,6 @@ import {compose} from 'recompose';
 import * as ROUTES from './routes.js';
 import Login from './Login';
 import { app, firestore } from "firebase";
-import app from 'firebase/app';
 
 function Copyright() {
     return (
