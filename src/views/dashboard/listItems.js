@@ -1,23 +1,21 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import LayersIcon from "@material-ui/icons/Layers";
-import AssignmentIcon from "@material-ui/icons/Assignment";
-
 import { Link } from "react-router-dom";
-import * as ROUTES from "../constants/routes";
+
+// Material UI imports
+import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+
+// Material UI Icon imports
+import DashboardIcon from "@material-ui/icons/Dashboard";
 import CourseIcon from "@material-ui/icons/MenuBook";
 import TeacherIcon from "@material-ui/icons/AssignmentInd";
 import InfoIcon from "@material-ui/icons/Info";
 import ContactIcon from "@material-ui/icons/HeadsetMic";
 import BlogIcon from "@material-ui/icons/Book";
 
+// Local file imports
+import * as ROUTES from "../constants/routes";
+
+/* the 4 main buttons on the side */
 export const mainListItems = (
   <div>
     <Link to={ROUTES.HOME} style={{ color: "#000", textDecoration: "none" }}>
@@ -64,6 +62,7 @@ export const mainListItems = (
   </div>
 );
 
+/* the 2 secondary buttons on the side */
 export const secondaryListItems = (
   <div>
     <Link to={ROUTES.ABOUT} style={{ color: "#000", textDecoration: "none" }}>
