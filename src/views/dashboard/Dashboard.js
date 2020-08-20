@@ -29,12 +29,11 @@ import useStyles from "./Style";
 
 // Pages
 import LandingPage from "./pages/LandingPage/LandingPage";
-import Home from "./pages/Home";
-import Subjects from "./pages/Subjects";
-import Instructors from "./pages/Instructors";
-import Blogs from "./pages/Blogs";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Subjects from "./pages/Subjects/Subjects";
+import Instructors from "./pages/Teachers/Teachers";
+import Blogs from "./pages/Blogs/Blogs";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
 
 /* DASHBOARD */
 export default function Dashboard() {
@@ -51,7 +50,7 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  ////////////////////////////const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <Router>

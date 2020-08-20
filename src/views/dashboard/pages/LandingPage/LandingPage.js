@@ -4,25 +4,17 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-// @material-ui/icons
-
 // core components
-//import Header from "components/Header/Header.js";
 import Footer from "../../../../components/Footer/Footer.js";
 import GridContainer from "../../../../components/Grid/GridContainer.js";
 import GridItem from "../../../../components/Grid/GridItem.js";
 import Button from "../../../../components/CustomButtons/Button.js";
-//import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "../../../../components/Parallax/Parallax.js";
 
 import styles from "../../../../assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.js";
-import TeamSection from "./Sections/TeamSection.js";
-import WorkSection from "./Sections/WorkSection.js";
-
-const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
@@ -31,20 +23,6 @@ export default function LandingPage(props) {
   const { ...rest } = props;
   return (
     <div>
-      {/*
-      <Header
-        color="transparent"
-        routes={dashboardRoutes}
-        brand="Material Kit React"
-        rightLinks={<HeaderLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 400,
-          color: "white"
-        }}
-        {...rest}
-      />
-      */}
       <Parallax filter image={require("../../../../assets/img/school.jpg")}>
         <div className={classes.container}>
           <GridContainer>
@@ -58,8 +36,8 @@ export default function LandingPage(props) {
               <Button
                 color="danger"
                 size="lg"
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
-                target="_blank"
+                href="http://localhost:3000/instructors"
+                //target="_blank"
                 rel="noopener noreferrer"
               >
                 <i className="fas fa-play" />
@@ -72,8 +50,6 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />
-          <TeamSection />
-          <WorkSection />
         </div>
       </div>
       <Footer />
