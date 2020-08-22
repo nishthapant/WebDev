@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-////////////////////////////////import * as Auth from "./views/authentication";
 import * as Dash from "./views/dashboard";
 
 import * as serviceWorker from "./serviceWorker";
-import Firebase, { FirebaseContext } from "./views/authentication/Firebase";
+import Firebase, { FirebaseContext } from "./views/dashboard/Firebase";
 
 import "./assets/scss/material-kit-react.scss?v=1.9.0";
 

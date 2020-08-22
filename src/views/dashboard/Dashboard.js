@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link,
+} from "react-router-dom";
 import clsx from "clsx";
 
 // Material UI imports
@@ -34,6 +40,8 @@ import Instructors from "./pages/Teachers/Teachers";
 import Blogs from "./pages/Blogs/Blogs";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
+import Login from "./Login";
+import Signup from "./Signup";
 
 /* DASHBOARD */
 export default function Dashboard() {
@@ -50,7 +58,59 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  ////////////////////////////const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  ///////////// login and signup state
+  const [reSignup, redirectSignup] = React.useState(false);
+  const [reLogin, redirectLogin] = React.useState(false);
+  const [reLogout, redirectLogout] = React.useState(false);
+  const [reHome, redirectHome] = React.useState(true);
+
+  const signup = () => {
+    redirectSignup(true);
+  };
+
+  const login = () => {
+    redirectLogin(true);
+  };
+
+  const logout = () => {
+    this.props.firebase.userLogout();
+    // console.log(this.props.firebase.getCurrentUser());
+    redirectLogout(true);
+  };
+
+  const home = () => {
+    redirectHome(true);
+  };
+
+  const redirectTo = () => {
+    if (this.state.redirectLogin) {
+      redirectLogin(false);
+      return (
+        <div>
+          {/* <Route path={ROUTES.LOGIN} component={Login}/> */}
+          <Redirect to={ROUTES.LOGIN} />
+        </div>
+      );
+    } else if (this.state.redirectSignup) {
+      redirectSignup(false);
+      return (
+        <div>
+          {/* <Route path={ROUTES.SIGNUP} component={Signup}/> */}
+          <Redirect to={ROUTES.SIGNUP} />
+        </div>
+      );
+    } else if (this.state.redirectHome) {
+      redirectHome(false);
+      return (
+        <div>
+          {/* <Route path='/' component={Home}/> */}
+          <Redirect to="/" />
+        </div>
+      );
+    }
+  };
+
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <Router>
@@ -89,14 +149,26 @@ export default function Dashboard() {
             </Typography>
 
             {/* the Sign-Up button */}
-            <Button variant="contained" className={classes.buttonMargin}>
-              Sign Up
-            </Button>
+            <Link to={ROUTES.SIGNUP}>
+              <Button
+                variant="contained"
+                className={classes.buttonMargin}
+                onClick={signup}
+              >
+                Sign Up
+              </Button>
+            </Link>
 
             {/* the Log-In button */}
-            <Button variant="contained" className={classes.buttonMargin}>
-              Log In
-            </Button>
+            <Link to={ROUTES.LOGIN}>
+              <Button
+                variant="contained"
+                className={classes.buttonMargin}
+                onClick={login}
+              >
+                Log In
+              </Button>
+            </Link>
           </Toolbar>
         </AppBar>
 
@@ -133,6 +205,12 @@ export default function Dashboard() {
             <Switch>
               <Route exact path={ROUTES.HOME}>
                 <LandingPage />
+              </Route>
+              <Route path={ROUTES.LOGIN}>
+                <Login />
+              </Route>
+              <Route path={ROUTES.SIGNUP}>
+                <Signup />
               </Route>
               <Route path={ROUTES.INSTRUCTORS}>
                 <Instructors />
